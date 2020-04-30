@@ -33,20 +33,44 @@
 //     return text // returns "This is a test"
 // }
 
-const deleteWords = (text, word) =>{
-    word=prompt(`Ingrese la palabra que desea eliminar`);
-    text=text.split(" ")
-    for (let i = 0; i < text.length; i++) {
-        if(text.includes(word)) {
+// const deleteWords = (text, word) =>{
+//     word=prompt(`Ingrese la palabra que desea eliminar`);
+//     text=text.split(" ")
+//     for (let i = 0; i < text.length; i++) {
+//         if(text.includes(word)) {
             
-            return text 
-        } else {
-                return text 
-        }     
-    }
-}
+//             return text 
+//         } else {
+//                 return text 
+//         }     
+//     }
+// }
 
 // const countLetters = (text) => {
 //     let letters=text.split(" ")
 //     return letters
 // }
+
+// const muestroColores = (color)=>{
+//     let todosLosColores=[];
+//     todosLosColores.push(color)
+//     // todosLosColores+=color
+//     return todosLosColores
+// }
+
+
+const muestroMenu=(text, style, colores, partidas) =>{ 
+    let option="";
+      if(option === style) {
+    text= (`
+  Estás en el MODO: ${style}
+  Colores actuales: ${colores}
+  Partidas jugadas: ${partidas}
+  1. COMENZAR JUEGO
+  2. CAMBIAR MODO
+  3. VER HISTORIAL DE PARTIDAS
+  4. SALIR`)
+      }
+      return text
+  }
+  

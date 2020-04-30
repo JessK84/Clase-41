@@ -4,10 +4,9 @@
 const getDoubleText =(text) => text + `\n` + text
 
 // "2 reemplazar": reemplaza un string por otro en el texto
-const getNewWords = (text) =>{
+const getNewWords = (text, word, newWord) =>{
     text = text.split(" ")
     if (text.includes(word))  {
-        let newWord =prompt(`Ingrese la nueva palabra`)
         let newText= text.indexOf(word); 
         text.splice(newText, 1, newWord)   
         text=text.join(" ")
@@ -22,9 +21,9 @@ const getNewWords = (text) =>{
 const addText =(text, extraText)=> text + `, ` + extraText
 
 // "4 cortar": pide dos números de índice entre los cuáles recortar el texto
-const cutText = (text, index, secondIndex) => {
+const cutText = (text, fromIndex, untilIndex) => {
     text=text.split("")
-    text.splice(index, secondIndex)
+    text.splice(fromIndex, untilIndex)
     text=text.join("")
     return text
 }
@@ -32,16 +31,16 @@ const cutText = (text, index, secondIndex) => {
 // "5 eliminar palabra": elimina una palabra del texto
 const deleteWords = (text, word) =>{
     text = text.split(" ")
-    if(text.includes(word)) {
-    let newText= text.indexOf(word);   
-    text.splice(newText, 1)
-    text=text.join(" ")
-        return 'La nueva oración es: ' + `\n` + text
-       } else {
+        if(text.includes(word)) {
+        let newText= text.indexOf(word);   
+        text.splice(newText, 1)
         text=text.join(" ")
-        return 'La palabra: '+ word + `\n` + 'No está en el siguiente texto: ' + text
+            return 'La nueva oración es: ' + `\n` + text
+        } else {
+            text=text.join(" ")
+            return 'La palabra: '+ word + `\n` + 'No está en el siguiente texto: ' + text
+        }
     }
-}
 
 // "6 buscar subtexto": busca un string  que devuelvae un msj diciendo si lo encontró o no
 const getSubText = (text, subTex) =>{
@@ -122,7 +121,8 @@ while(wantContinue) {
 
         case "2":// "reemplazar text"
             word=prompt(`¿Qué palabra desea reemplazar`); 
-            alert(getNewWords(text, word))
+            newWord =prompt(`Ingrese la nueva palabra`)
+            alert(getNewWords(text, word, newWord))
         break;
 
         case "3":// "agregar texto"
@@ -131,9 +131,9 @@ while(wantContinue) {
         break;
         
         case "4": // "cortar"
-            let index= Number(prompt(`El texto contiene ${text.length} índices, escoga el primer índice a partir del cual recortar`))
-            let secondIndex =Number(prompt(`Escoga el segundo índice hasta donde recortar`))
-            alert(cutText(text, index, secondIndex))
+            fromIndex= Number(prompt(`El texto contiene ${text.length} índices, escoga el primer índice a partir del cual recortar`))
+            untilIndex =Number(prompt(`Escoga el segundo índice hasta donde recortar`))
+            alert(cutText(text, fromIndex, untilIndex))
         break;
 
         case "5":// "eliminar palabra"
